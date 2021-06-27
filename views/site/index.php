@@ -1,4 +1,12 @@
-<?php include ROOT . '/views/layouts/header.php'; ?>
+<?php
+
+/**
+ * @var $filmList models/Film.php
+ */
+
+include ROOT . '/views/layouts/header.php'; 
+
+?>
 
 <section>
 

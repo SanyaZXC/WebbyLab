@@ -1,4 +1,12 @@
-<?php include ROOT . '/views/layouts/header.php'; ?>
+<?php
+
+/**
+ * @var $film models/Film.php
+ */
+
+include ROOT . '/views/layouts/header.php'; 
+
+?>
 <section>
     <div class="container">
         <p>Название: <?= $film['title'];?></p>
