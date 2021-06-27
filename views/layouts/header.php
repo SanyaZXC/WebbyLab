@@ -24,7 +24,14 @@
                     <a href="/site/upload">Импортировать фильмы</a>
                 </div>
                 <div class="header__menu-find">
-                    найти
+                    <form action="/site/search" method="POST">
+                        <select name="search_by">
+                            <option value="title">По названию</option>
+                            <option value="stars">По актёру</option>
+                        </select>
+                        <input type="search" name="search" placeholder="Поиск...">
+                        <input type="submit" name="submit" value="Найти">
+                    </form>
                 </div>
             </div>
         </div>

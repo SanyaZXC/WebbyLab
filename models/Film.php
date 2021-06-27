@@ -30,9 +30,9 @@ class Film
         $db = Db::getConnection();
 
         $sql = 'INSERT INTO film '
-        . '(title, release_year, format, stars) '
-        . 'VALUES '
-        . '(:title, :release_year, :format, :stars);';
+            . '(title, release_year, format, stars) '
+            . 'VALUES '
+            . '(:title, :release_year, :format, :stars);';
 
         $result = $db->prepare($sql);
         $result->bindParam(':title', $params[0], PDO::PARAM_STR);
@@ -46,7 +46,7 @@ class Film
     /**
      * import films
      */
-     public static function upload()
+    public static function upload()
     {
         $db = Db::getConnection();
 
@@ -105,5 +105,28 @@ class Film
         $result = $db->prepare($sql);
         $result->bindParam(':filmId', $filmId, PDO::PARAM_INT);
         return $result->execute();
+    }
+
+    /**
+     * find film by title
+     */
+
+    public static function getSearchedFilm()
+    {
+        $db = Db::getConnection();
+
+        $filmList = [];
+
+        $search_by = $_POST['search_by'];
+        $search = $_POST['search'];
+        $result = $db->query("SELECT id, title FROM film WHERE `$search_by` LIKE '%$search%';");
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $filmList[$i]['id'] = $row['id'];
+            $filmList[$i]['title'] = $row['title'];
+            $i++;
+        }
+        return $filmList;
     }
 }

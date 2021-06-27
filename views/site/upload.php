@@ -1,6 +1,6 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
 
-<div class="upload">
+<section>
     <div class="container">
 
         <form enctype="multipart/form-data" action="" method="POST">
@@ -12,4 +12,4 @@
             <input type="submit" value="Отправить" />
         </form>
     </div>
-</div>
+</section>

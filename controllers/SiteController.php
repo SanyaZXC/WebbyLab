@@ -44,4 +44,12 @@ class SiteController
         header('Location: /');
         return $result;
     }
+
+    public function actionSearch()
+    {
+        $data = Film::getSearchedFilm();
+
+        require_once ROOT . '/views/site/search.php';
+        return true;
+    }
 }
