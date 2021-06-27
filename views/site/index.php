@@ -5,23 +5,24 @@
     <div class="container">
         <div class="content">
             <h1>Фильмы</h1>
+            <?php if (!empty($filmList)):?>
             <table class="table">
                 <tr>
                     <th>Название</th>
-                    <th>Год выпуска</th>
-                    <th>Формат</th>
-                    <th>Актёры</th>
+                    <th>Удалить</th>
                 </tr>
                 <?php foreach ($filmList as $film) : ?>
                     <tr>
                         <td><a href="/site/film/<?= $film['id']?>"><?= $film['title']; ?></a></td>
-                        <td><?= $film['release_year']; ?></td>
-                        <td><?= $film['format']; ?></td>
-                        <td><?= $film['stars']; ?></td>
+
+                        <td><a href="/site/delete/<?= $film['id']?>">Удалить</a></td>
                     </tr>
 
                 <?php endforeach; ?>
             </table>
+            <?php else:?>
+            <p>фильмов пока нет(</p>
+            <?php endif;?>
         </div>
     </div>
 

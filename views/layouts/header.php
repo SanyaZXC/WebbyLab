@@ -18,10 +18,7 @@
                     <a href="/">Главная</a>
                 </div>
                 <div class="header__menu-add">
-                    <a href="">Добавить фильм</a>
-                </div>
-                <div class="header__menu-delete">
-                    <a href="">Удалить фильм</a>
+                    <a href="/site/add">Добавить фильм</a>
                 </div>
                 <div class="header__menu-import">
                     <a href="/site/upload">Импортировать фильмы</a>
