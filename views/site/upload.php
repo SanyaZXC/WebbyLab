@@ -3,13 +3,13 @@
 <div class="upload">
     <div class="container">
 
-        <form enctype="multipart/form-data" action="__URL__" method="POST">
+        <form enctype="multipart/form-data" action="" method="POST">
 
             <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
-            Отправить этот файл: <input name="userfile" type="file" />
+            Импортировать фильмы из txt: <input name="films" type="file" />
             
-            <input type="submit" value="Отправить файл" />
+            <input type="submit" value="Отправить" />
         </form>
     </div>
 </div>
