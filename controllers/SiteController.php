@@ -13,8 +13,12 @@ class SiteController
     {
         if (isset($_POST['submit'])) {
             $params = [$_POST['title'], $_POST['release_year'], $_POST['format'], $_POST['stars']];
-            Film::addFilm($params);
-            header('Location: /');
+
+            $errors = Film::validate($params);
+            if (is_bool($errors)) {
+                Film::addFilm($params);
+                header('Location: /');
+            }
         }
         require_once ROOT . '/views/site/create.php';
         return true;
