@@ -57,18 +57,18 @@ class Film
             $film = explode(PHP_EOL, trim($film));
 
             $data = [];
+            $pattern = ".+?: (.+)$";
             foreach ($film as $line) {
-                $obj = explode(': ', $line);
-                $data[] = $obj[1];
+                preg_match_all("/$pattern/", $line, $matches);
+                $data[] = $matches[1];
             }
-
             $sql = "INSERT INTO film (title, release_year, format, stars) 
                         VALUES (:title, :release_year, :format, :stars);";
             $result = $db->prepare($sql);
-            $result->bindParam(':title', $data[0], PDO::PARAM_STR);
-            $result->bindParam(':release_year', $data[1], PDO::PARAM_INT);
-            $result->bindParam(':format', $data[2], PDO::PARAM_STR);
-            $result->bindParam(':stars', $data[3], PDO::PARAM_STR);
+            $result->bindParam(':title', $data[0][0], PDO::PARAM_STR);
+            $result->bindParam(':release_year', $data[1][0], PDO::PARAM_INT);
+            $result->bindParam(':format', $data[2][0], PDO::PARAM_STR);
+            $result->bindParam(':stars', $data[3][0], PDO::PARAM_STR);
             $result->execute();
         }
         return true;
@@ -137,7 +137,7 @@ class Film
                 $filmList[$i]['title'] = $row['title'];
                 $i++;
             }
-        } 
+        }
         return $filmList;
     }
 
