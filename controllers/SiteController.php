@@ -13,10 +13,10 @@ class SiteController
     {
         if (isset($_POST['submit'])) {
             $params = [$_POST['title'], $_POST['release_year'], $_POST['format'], $_POST['stars']];
-
             $errors = Film::validate($params);
-            if (is_bool($errors)) {
-                Film::addFilm($params);
+            if ($errors) {
+                $protectedData = Film::getProtectedData($params);
+                Film::addFilm($protectedData);
                 header('Location: /');
             }
         }
